@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Joke Generator</title>
-  <link rel="stylesheet" href="/styles.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Get a Personalized Joke 🤣</h1>
-    <form action="/get-joke" method="POST">
-      <input type="text" name="name" placeholder="Enter your name" required />
+  <head>
+    <title>Joke Generator</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Get a Personalized Joke 🤣</h1>
+      <form action="/get-joke" method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required />
 
-      <!-- Joke category dropdown -->
-      <select name="category">
-        <option value="Any">Any Category</option>
-        <option value="Programming">Programming</option>
-        <option value="Misc">Misc</option>
-        <option value="Dark">Dark</option>
-        <option value="Pun">Pun</option>
-      </select>
+        <!-- Joke category dropdown -->
+        <select name="category">
+          <option value="Any">Any Category</option>
+          <option value="Programming">Programming</option>
+          <option value="Misc">Misc</option>
+          <option value="Pun">Pun</option>
+        </select>
 
-      <button type="submit">Tell Me a Joke</button>
-    </form>
-  </div>
-</body>
+        <button type="submit">Tell Me a Joke</button>
+      </form>
+    </div>
+  </body>
 </html>
