@@ -1,4 +1,3 @@
-/* Reset default margins/padding */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: linear-gradient(120deg, #e0e7ff 0%, #f4f4f9 100%);
@@ -11,11 +10,9 @@ body {
   justify-content: center;
   text-align: center;
   overflow-x: hidden;
-  /* Move the box up by 10% of viewport height */
   transform: translateY(-10vh);
 }
 
-/* Center container with glassmorphism effect */
 .container {
   max-width: 420px;
   width: 100%;
@@ -28,7 +25,6 @@ body {
   margin: 0;
 }
 
-/* Heading */
 h1 {
   font-size: 2.1em;
   font-weight: 700;
@@ -82,7 +78,6 @@ button:hover {
   transform: translateY(-2px) scale(1.03);
 }
 
-/* Joke text */
 .joke {
   font-size: 1.25em;
   margin: 28px 0 18px 0;
