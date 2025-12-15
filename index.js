@@ -17,7 +17,8 @@ app.post("/get-joke", async (req, res) => {
   const category = req.body.category;
 
   try {
-    const apiUrl = `https://v2.jokeapi.dev/joke/${category}?type=single`;
+    // Filters out dark, nsfw, religious, political, racist, sexist, and explicit jokes for all categories
+    const apiUrl = `https://v2.jokeapi.dev/joke/${category}?type=single&blacklistFlags=dark,nsfw,religious,political,racist,sexist,explicit`;
 
     const response = await axios.get(apiUrl);
 
