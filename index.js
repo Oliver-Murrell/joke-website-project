@@ -17,12 +17,20 @@ app.post("/get-joke", async (req, res) => {
   const category = req.body.category;
 
   try {
-    // Filters out dark, nsfw, religious, political, racist, sexist, and explicit jokes for all categories
-    const apiUrl = `https://v2.jokeapi.dev/joke/${category}?type=single&blacklistFlags=dark,nsfw,religious,political,racist,sexist,explicit`;
+    // Use JokeAPI safe-mode for only safe jokes
+    const apiUrl = `https://v2.jokeapi.dev/joke/Any?safe-mode`;
+    console.log("Requesting:", apiUrl);
 
     const response = await axios.get(apiUrl);
 
-    let joke = response.data.joke;
+    let joke = "";
+    if (response.data.type === "single") {
+      joke = response.data.joke;
+    } else if (response.data.type === "twopart") {
+      joke = `${response.data.setup} ... ${response.data.delivery}`;
+    } else {
+      joke = "No joke found.";
+    }
 
     joke = joke.replace(/\b(Chuck Norris|he|He)\b/g, userName);
 
@@ -30,7 +38,13 @@ app.post("/get-joke", async (req, res) => {
   } catch (error) {
     console.error("Error fetching joke:", error.message);
 
-    res.send("Oops! Something went wrong while getting your joke.");
+    let errorMsg = "Oops! Something went wrong while getting your joke.";
+    if (error.response && error.response.data && error.response.data.message) {
+      errorMsg += `<br><br>Details: ${error.response.data.message}`;
+    } else if (error.message) {
+      errorMsg += `<br><br>Details: ${error.message}`;
+    }
+    res.send(errorMsg);
   }
 });
 
